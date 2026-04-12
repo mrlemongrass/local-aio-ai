@@ -77,7 +77,14 @@ VENV_PATH="$HOME/.ai-lab-venv"
 python3 -m venv "$VENV_PATH"
 source "$VENV_PATH/bin/activate"
 pip install -r requirements.txt
+
+# Create .env template for the watcher script
+ENV_FILE="$VENV_PATH/.env"
+echo "WEBUI_API_KEY=YOUR_API_KEY_HERE" > "$ENV_FILE"
+echo "KNOWLEDGE_ID=YOUR_KNOWLEDGE_ID_HERE" >> "$ENV_FILE"
+
 echo -e "✅ Sandbox created at $VENV_PATH"
+echo -e "✅ Watcher configuration file created at $ENV_FILE"
 
 # --- 5. DOCKER LAUNCH ---
 echo -e "\n${BLUE}[5/5] Launching UI and PDF Vision Engine...${NC}"
@@ -101,7 +108,7 @@ case $REMOTE_CHOICE in
     2)
         echo -e "Installing WireGuard Tools..."
         brew install wireguard-tools
-        echo -e "${YELLOW}Pro Tip:${NC} As a CCNP, you likely want to manage your own keys."
+        echo -e "${YELLOW}Pro Tip:${NC} You will need to manage your own keys and open UDP port 51820 on your router."
         echo -e "Check ${BLUE}https://www.wireguard.com/install/${NC} for advanced macOS server config."
         ;;
     3)
@@ -112,8 +119,6 @@ case $REMOTE_CHOICE in
         ;;
 esac
 
-
-
 echo -e "\n${GREEN}=================================================="
 echo -e "       SETUP SUCCESSFUL!"
 echo -e "==================================================${NC}"
@@ -121,3 +126,4 @@ echo -e "1. UI is running at: http://localhost:3000"
 echo -e "2. Run this command to start your AI Brain:"
 echo -e "${YELLOW}   llama-server -hf $MODEL_HF --port 8080 -ngl 99 -c 131072 --flash-attn on${NC}"
 echo -e "3. Drop PDFs into: $DATA_DIR/library"
+echo -e "4. Edit $ENV_FILE with your WebUI keys to activate the Watcher script."
