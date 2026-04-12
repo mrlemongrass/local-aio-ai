@@ -30,8 +30,7 @@ If a user tries to run the F16 model on a base Mac with 8GB or 16GB of RAM, it w
 
 The Fix: Use the setup.sh hardware detection to force a Q4_K_M or IQ4_XS quantization for lower-spec machines.
 
-
-Remote Access Issues
+🌐 Remote Access Issues
 Tailscale Not Connecting: Ensure "Allow Third-Party Apps" isn't blocked by your Mac's Firewall (System Settings > Network > Firewall).
 
 WireGuard Handshake Failure: If using WireGuard, ensure you have forwarded UDP Port 51820 on your home router to your Mac's local IP.
@@ -39,7 +38,7 @@ WireGuard Handshake Failure: If using WireGuard, ensure you have forwarded UDP P
 WebUI Timeout: If accessing the UI via a VPN/Tailscale IP and it times out, ensure your docker-compose.yaml is listening on 0.0.0.0 (all interfaces) rather than just 127.0.0.1.
 
 🧠 Pre-Configured System Prompt: "The Research Expert"
-Gemma 4 is exceptionally good at reasoning, but it needs a "nudge" to handle 128k context without getting lost. Inside Open WebUI, go to Workspace > Models > Gemma 4 > Edit and paste$
+Gemma 4 is exceptionally good at reasoning, but it needs a "nudge" to handle 128k context without getting lost. Inside Open WebUI, go to Workspace > Models > Gemma 4 > Edit and paste this into the System Prompt:
 
 Role: You are an elite Research Assistant specializing in technical analysis, military communications, and doctoral-level academic synthesis.
 
