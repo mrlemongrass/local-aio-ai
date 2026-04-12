@@ -1,0 +1,21 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://host.docker.internal:8080/v1
+      - OPENAI_API_KEY=sk-local-rag
+      - DOCLING_URL=http://host.docker.internal:5001
+    volumes:
+      - ${DATA_PATH}/webui-data:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+
+  docling-serve:
+    image: quay.io/docling-project/docling-serve-cu128
+    container_name: docling-serve
+    ports:
+      - "5001:5001"
