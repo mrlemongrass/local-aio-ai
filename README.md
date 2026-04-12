@@ -3,7 +3,7 @@
 Run this one command to turn your Mac into a private, high-powered research station:
 
 ```bash
-git clone [https://github.com/yourusername/ai-lab.git](https://github.com/yourusername/ai-lab.git) && cd ai-lab && chmod +x setup.sh && ./setup.sh
+git clone [https://github.com/mrlemongrass/local-aio-ai.git](https://github.com/yourusername/local-aio-ai.git) && cd ai-lab && chmod +x setup.sh && ./setup.sh
 
 
 🛠 Troubleshooting Common Issues
